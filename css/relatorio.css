@@ -77,3 +77,13 @@ button:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    margin: 20px 0; /* Adiciona espaço acima e abaixo dos botões */
+}
+
+.button-container button {
+    margin: 0 10px; /* Adiciona espaço entre os botões */
+}

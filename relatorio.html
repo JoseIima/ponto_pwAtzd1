@@ -11,7 +11,11 @@
         <h1>Relatório de Ponto</h1>
     </header>
     <main>
-        <button id="filtrar">Filtrar</button>
+        <div class="button-container">
+            <button id="filtrar">Filtrar</button>
+            <button id="gerar-txt">Gerar TXT</button>
+            <button id="voltar">Voltar</button>
+        </div>
         <div id="filtro-opcoes" style="display:none;">
             <input type="text" id="filtro-nome" placeholder="Filtrar por Nome">
             <input type="text" id="filtro-registro" placeholder="Filtrar por Registro">
@@ -19,32 +23,27 @@
             <button id="aplicar-filtro">Aplicar Filtro</button>
         </div>
         <div id="relatorio"></div>
-        <button id="gerar-txt">Gerar TXT</button>
-        <button id="voltar">Voltar</button>
+
+        <!-- Modal para exibir detalhes do registro -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Detalhes do Registro</h2>
+                <div id="detalhes"></div>
+            </div>
+        </div>
+
+        <div id="modal-select-txt" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>Escolha um registro para gerar o arquivo TXT</h2>
+                <select id="select-registro"></select>
+                <button id="gerar-txt-confirmar">Gerar TXT</button>
+                <button id="fechar-modal">Fechar</button>
+            </div>
+        </div>
+
     </main>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Detalhes do Registro</h2>
-            <div id="detalhes"></div>
-        </div>
-    </div>
-
-    <div id="modal-select-txt" class="modal" style="display:none;">
-        <div class="modal-content">
-            <h2>Escolha um registro para gerar o arquivo TXT</h2>
-            <select id="select-registro"></select>
-            <button id="gerar-txt-confirmar">Gerar TXT</button>
-            <button id="fechar-modal">Fechar</button>
-        </div>
-    </div>
-
-    <script src="js/relatorio.js"></script>
-    <script>
-        document.getElementById('voltar').addEventListener('click', function() {
-            window.location.href = 'index.php'; // Redirecionar para a página index.php
-        });
-    </script>
+    <script src="js/relatorio.js"></script> 
 </body>
 </html>
