@@ -1,5 +1,5 @@
 document.getElementById('registro-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impedir o envio padrão do formulário
+    event.preventDefault(); 
 
     // Obter os valores dos campos
     const nome = document.getElementById('nome').value;
@@ -12,11 +12,11 @@ document.getElementById('registro-form').addEventListener('submit', function(eve
     // Verificar a data
     const dataSelecionada = new Date(data);
     const dataAtual = new Date();
-    dataAtual.setHours(0, 0, 0, 0); // Para comparação
+    dataAtual.setHours(0, 0, 0, 0);
 
     if (dataSelecionada > dataAtual) {
         alert("Não é possível registrar ponto em uma data futura.");
-        return; // Sair da função se a data for inválida
+        return; 
     }
 
     // Criar um objeto para armazenar o registro
@@ -29,20 +29,17 @@ document.getElementById('registro-form').addEventListener('submit', function(eve
         justificativa: justificativa
     };
 
-    // Obter registros existentes ou criar um novo array
     let registros = JSON.parse(localStorage.getItem('registros')) || [];
-    registros.push(registroPonto); // Adicionar o novo registro
-
-    // Salvar no LocalStorage
+    registros.push(registroPonto); 
+   
     localStorage.setItem('registros', JSON.stringify(registros));
 
     // Redirecionar para a página de relatório
     window.location.href = 'relatorio.html';
 });
 
-// Evento para o botão "Ver Relatório"
 document.getElementById('ver-relatorio').addEventListener('click', function() {
-    // Redirecionar diretamente para a página de relatório
+    
     window.location.href = 'relatorio.html';
 });
 
