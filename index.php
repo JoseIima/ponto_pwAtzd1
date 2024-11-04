@@ -1,10 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html"); // Redirecionar para a página de login se não estiver logado
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Controle de Ponto</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- CSS da página inicial -->
 </head>
 <body>
     <header>
@@ -34,6 +41,6 @@
         
         <div id="mensagemSucesso" class="mensagem" style="display:none;"></div>
     </main>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

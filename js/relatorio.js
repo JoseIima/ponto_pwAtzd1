@@ -192,5 +192,5 @@ document.getElementById('aplicar-filtro').addEventListener('click', aplicarFiltr
 window.onload = exibirRegistros;
 
 document.getElementById('voltar').addEventListener('click', function() {
-    window.location.href = 'index.html'; 
+    window.location.href = 'index.php'; 
 });
