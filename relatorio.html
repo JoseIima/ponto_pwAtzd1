@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Ponto</title>
+    <link rel="stylesheet" href="relatorio.css"> <!-- Link para o CSS externo -->
+</head>
+<body>
+    <header>
+        <h1>Relatório de Ponto</h1>
+    </header>
+    <main>
+        <button id="filtrar">Filtrar</button>
+        <div id="filtro-opcoes" style="display:none;">
+            <input type="text" id="filtro-nome" placeholder="Filtrar por Nome">
+            <input type="text" id="filtro-registro" placeholder="Filtrar por Registro">
+            <input type="date" id="filtro-data">
+            <button id="aplicar-filtro">Aplicar Filtro</button>
+        </div>
+        <div id="relatorio"></div>
+        <button id="gerar-txt">Gerar TXT</button>
+        <button id="voltar">Voltar</button>
+    </main>
+
+    <!-- Modal para exibir detalhes do registro -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalhes do Registro</h2>
+            <div id="detalhes"></div>
+        </div>
+    </div>
+
+    <!-- Modal para seleção de registro para gerar TXT -->
+    <div id="modal-select-txt" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Escolha um registro para gerar o arquivo TXT</h2>
+            <select id="select-registro"></select>
+            <button id="gerar-txt-confirmar">Gerar TXT</button>
+            <button id="fechar-modal">Fechar</button>
+        </div>
+    </div>
+
+    <script src="relatorio.js"></script> <!-- Link para o JavaScript externo -->
+</body>
+</html>

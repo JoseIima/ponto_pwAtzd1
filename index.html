@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Ponto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Controle de Ponto</h1>
+        <div id="data-hora"></div>
+    </header>
+    <main>
+        <h2>Registrar Ponto</h2>
+        <form id="registro-form">
+            <input type="text" id="nome" placeholder="Nome completo" required>
+            <input type="text" id="registro" placeholder="Número de Registro" required>
+            <select id="tipo-ponto">
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+                <option value="intervalo">Intervalo</option>
+            </select>
+            <input type="date" id="data" required>
+            <input type="time" id="hora" required>
+            <input type="text" id="justificativa" placeholder="Justificativa (opcional)">
+            <input type="file" id="upload" accept=".pdf,.doc,.docx,.jpg,.png">
+            <button type="submit">Registrar</button>
+        </form>
+        
+        <!-- Div para centralizar o botão "Ver Relatório" -->
+        <div class="centralizar-botao">
+            <button id="ver-relatorio">Ver Relatório</button>
+        </div>
+        
+        <!-- Div para mensagem de sucesso -->
+        <div id="mensagemSucesso" class="mensagem" style="display:none;"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
