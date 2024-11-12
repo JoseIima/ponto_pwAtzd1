@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #06e311, #3ce76d);
+    background: linear-gradient(to right, #02d693, #01674a);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +49,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0c0f0f;
+    background-color: #012352;
 }
 
 .footer {
