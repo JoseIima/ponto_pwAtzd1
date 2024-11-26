@@ -1,4 +1,3 @@
-// Função para exibir os registros
 function exibirRegistros(registrosFiltrados) {
     const registros = registrosFiltrados || JSON.parse(localStorage.getItem('registros')) || [];
     const relatorioDiv = document.getElementById('relatorio');
@@ -8,7 +7,7 @@ function exibirRegistros(registrosFiltrados) {
         return;
     }
 
-    relatorioDiv.innerHTML = ''; // Limpa os registros anteriores
+    relatorioDiv.innerHTML = ''; 
     registros.forEach((registro, index) => {
         const registroDiv = document.createElement('div');
         registroDiv.classList.add('registro');
@@ -23,10 +22,9 @@ function exibirRegistros(registrosFiltrados) {
         relatorioDiv.appendChild(registroDiv);
     });
 
-    // Eventos para os botões de edição e exclusão
     document.querySelectorAll('.editar').forEach(btn => {
         btn.addEventListener('click', (event) => {
-            event.stopPropagation(); // Aqui ele impede a chamada do evento de clique no registro
+            event.stopPropagation(); 
             const index = btn.dataset.index;
             editarRegistro(index);
         });
@@ -41,7 +39,6 @@ function exibirRegistros(registrosFiltrados) {
     });
 }
 
-// Função para aplicar o filtro
 function aplicarFiltro() {
     const nomeFiltro = document.getElementById('filtro-nome').value.toLowerCase();
     const registroFiltro = document.getElementById('filtro-registro').value.toLowerCase();
@@ -55,10 +52,9 @@ function aplicarFiltro() {
         return nomeMatch && registroMatch && dataMatch;
     });
 
-    exibirRegistros(registrosFiltrados); // Exibe os registros filtrados
+    exibirRegistros(registrosFiltrados); 
 }
 
-// Função para mostrar os detalhes do registro em um modal
 function mostrarDetalhes(registro) {
     const detalhesDiv = document.getElementById('detalhes');
     detalhesDiv.innerHTML = `
@@ -69,15 +65,12 @@ function mostrarDetalhes(registro) {
         <div><strong>Hora:</strong> ${registro.hora}</div>
         <div><strong>Justificativa:</strong> ${registro.justificativa}</div>
     `;
-    document.getElementById('myModal').style.display = 'flex'; // Aqui eleostra o modal
+    document.getElementById('myModal').style.display = 'flex'; 
 }
-
-// Função para editar um registro
 function editarRegistro(index) {
     const registros = JSON.parse(localStorage.getItem('registros')) || [];
     const registro = registros[index];
     
-    // Criar um formulário de edição
     const form = document.createElement('form');
     form.innerHTML = `
         <label>Nome: <input type="text" value="${registro.nome}" required></label><br>
@@ -89,11 +82,9 @@ function editarRegistro(index) {
         <button type="submit">Salvar</button>
     `;
 
-    // Adicionar evento para salvar as edições
     form.onsubmit = function(event) {
         event.preventDefault();
 
-        // Verificar se a data é no futuro
         const novaData = new Date(form[3].value);
         const hoje = new Date();
         hoje.setHours(0, 0, 0, 0);
@@ -117,14 +108,11 @@ function editarRegistro(index) {
         document.getElementById('myModal').style.display = 'none';
     };
 
-    // Exibir o formulário de ediçao
     const detalhesDiv = document.getElementById('detalhes');
     detalhesDiv.innerHTML = '';
     detalhesDiv.appendChild(form);
     document.getElementById('myModal').style.display = 'flex'; 
 }
-
-// Função para excluir um registro
 function excluirRegistro(index) {
     if (confirm('Você tem certeza que deseja excluir este registro?')) {
         const registros = JSON.parse(localStorage.getItem('registros')) || [];
@@ -134,7 +122,6 @@ function excluirRegistro(index) {
     }
 }
 
-// Função para gerar e baixar o arquivo TXT
 function gerarArquivoTXT() {
     const registros = JSON.parse(localStorage.getItem('registros')) || [];
     if (registros.length === 0) {
@@ -157,7 +144,6 @@ function gerarArquivoTXT() {
     const blob = new Blob([texto], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
 
-    // Cria um link para download
     const a = document.createElement('a');
     a.href = url;
     a.download = 'relatorio.txt';
@@ -167,7 +153,6 @@ function gerarArquivoTXT() {
     URL.revokeObjectURL(url); 
 }
 
-// Adicionei um evento de clique ao botão "Gerar TXT"
 document.getElementById('gerar-txt').addEventListener('click', gerarArquivoTXT);
 
 document.querySelector('.close').onclick = function() {
@@ -180,13 +165,11 @@ window.onclick = function(event) {
     }
 }
 
-// Adicionei o evento para o botão de filtro
 document.getElementById('filtrar').addEventListener('click', () => {
     const opcoesFiltro = document.getElementById('filtro-opcoes');
-    opcoesFiltro.style.display = opcoesFiltro.style.display === 'none' ? 'block' : 'none'; // Alterna a visibilidade
+    opcoesFiltro.style.display = opcoesFiltro.style.display === 'none' ? 'block' : 'none';
 });
 
-// Adicionei um evento para aplicar o filtro
 document.getElementById('aplicar-filtro').addEventListener('click', aplicarFiltro);
 
 window.onload = exibirRegistros;
